@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import pickle
-from utils import (
+from hybrid_utils import (
     GridWorld,
     compute_future_grids,
     astar_expert,
