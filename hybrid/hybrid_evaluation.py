@@ -1,8 +1,8 @@
 import torch
-from utils import (
+from hybrid_utils import (
     evaluate,
 )
-from cnn_training import (
+from hybrid_cnn_training import (
     CNNHeuristic,
     cnn_training_data_loop,
     train_cnn_heuristic,
