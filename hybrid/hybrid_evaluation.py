@@ -15,8 +15,8 @@ import os
 # ============================================================
 grid_sizes=[32, 56, 80, 104]
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-cnn_model_path = "cnn_heuristic.pth" # or "cnn_policy_value_accum_final.pth"
-#cnn_model_path = "cnn_policy_value_accum_final.pth"
+#cnn_model_path = "cnn_heuristic.pth" # or "cnn_policy_value_accum_final.pth"
+cnn_model_path = "cnn_policy_value_accum_final.pth"
 training_data_path = "cnn_training_data.pkl"
 test_data_path = "cnn_test_data.pkl"
 
@@ -46,3 +46,15 @@ print("\nRunning evaluation:")
 metrics = evaluate(cnn_heuristic, n_tests=500, device=device, file = "episodes_train.csv")
 metrics = evaluate(cnn_heuristic, n_tests=3500, device=device, file = "episodes_valid.csv")
 metrics = evaluate(cnn_heuristic, n_tests=10000, device=device, file = "episodes_test.csv")
+
+# ============================================================
+# 4. Visualization script
+# ============================================================
+
+env_cnn = #Add copy of environment 
+cnn_model_path = "cnn_policy_value_accum_final.pth"
+cnn_heuristic = CNNHeuristic().to(device)
+cnn_heuristic.load_state_dict(torch.load(cnn_model_path))
+cnn_heuristic.eval()
+# Returns 
+path_cnn, _, _, _ = cnn_plan_path(env_cnn, model, max_steps=400, epsilon=0)
